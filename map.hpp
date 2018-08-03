@@ -1,10 +1,10 @@
 #pragma once
+#include "entity.hpp"
 #include <fstream>
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
-#include "entity.hpp"
 #include "texture.hpp"
 
 class Map

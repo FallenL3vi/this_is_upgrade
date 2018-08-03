@@ -4,7 +4,7 @@
 Engine::Engine()
 : map("tutorial.txt")
 {
-	window.create(sf::VideoMode(600,480),"SDSD",sf::Style::Default);
+	window.create(sf::VideoMode(640,640),"SDSD",sf::Style::Default);
 	window.setFramerateLimit(60);
 }
 
@@ -34,12 +34,12 @@ void Engine::start()
 
 void Engine::draw()
 {
-	int a = 400;
 	window.clear();
-	for(int i = 0; i < a; i ++)
+	for(int i = 0; i < map.entities.size(); i ++)
 	{
-	window.draw(map.entities[i]);
+	window.draw(map.entities[i].sprite);
 	}
+	//window.draw(map.entities[0].sprite);
 	window.display();
 }
 

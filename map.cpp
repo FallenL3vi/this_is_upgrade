@@ -38,6 +38,7 @@ Map::Map(std::string map_name)
 				}
 			}
 		}
+		file.get(number);
 	}
 	file.close();
 }
