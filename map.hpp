@@ -1,4 +1,6 @@
 #pragma once
+#include "keyboard.hpp"
+#include "tile.hpp"
 #include "entity.hpp"
 #include <fstream>
 #include <string>
@@ -10,15 +12,19 @@
 class Map
 {
 	private:
-	
+
 	public:
+		Keyboard keyboard;
 	
 		const static short height = 20;
 		const static short width = 20;
 		
 		Texture texture;
-
-		std::vector <Entity> entities;
+		
+		Entity entity;
+		std::vector <Tile> tiles;
 
 		Map(std::string map_name);
+
+		void update(float loopTime);
 };

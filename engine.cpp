@@ -35,14 +35,16 @@ void Engine::start()
 void Engine::draw()
 {
 	window.clear();
-	for(int i = 0; i < map.entities.size(); i ++)
+	for(int i = 0; i < map.tiles.size(); i ++)
 	{
-	window.draw(map.entities[i].sprite);
+	window.draw(map.tiles[i].sprite);
 	}
+	window.draw(map.entity.sprite);
 	//window.draw(map.entities[0].sprite);
 	window.display();
 }
 
 void Engine::update(float loopTime)
 {
+	map.update(loopTime);
 }

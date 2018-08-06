@@ -1,12 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <math.h>
+#include <iostream>
 
-class Entity 
+class Map;
+
+class Entity : public sf::Sprite
 {
 	private:
+		float speed = 32;
+		Map &referent;
 	public:
-	Entity(int i, int j, sf::Texture &texture);
-	sf::Sprite sprite;
-	void move();
+		sf::Sprite sprite;
+
+		Entity(short X, short Y, sf::Texture &texture, Map &referent);
 	
+		void move(const sf::Vector2f &offset, float loopTime);
 };

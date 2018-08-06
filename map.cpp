@@ -1,6 +1,7 @@
 #include "map.hpp"
 
 Map::Map(std::string map_name)
+: entity(1,1,texture.textures_pit[2],*this)
 {
 	char number;
 
@@ -21,14 +22,15 @@ Map::Map(std::string map_name)
 			{
 				case '1':
 					{
-						Entity entity(i,j,texture.textures_pit[1]);
-						entities.push_back(entity);
+						Tile tile(i,j,texture.textures_pit[1]);
+						tile.coll = 1;
+						tiles.push_back(tile);
 						break;
 					}
 				case '0':
 					{
-						Entity entity(i,j,texture.textures_pit[0]);
-						entities.push_back(entity);
+						Tile tile(i,j,texture.textures_pit[0]);
+						tiles.push_back(tile);
 						break;
 					}
 				default:
@@ -43,4 +45,7 @@ Map::Map(std::string map_name)
 	file.close();
 }
 
-
+void Map::update(float loopTime)
+{
+	entity.move(keyboard.input(),loopTime);
+}
