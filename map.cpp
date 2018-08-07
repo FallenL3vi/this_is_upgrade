@@ -24,12 +24,15 @@ Map::Map(std::string map_name)
 					{
 						Tile tile(i,j,texture.textures_pit[1]);
 						tile.coll = 1;
+						std::cout << tile.coll;
 						tiles.push_back(tile);
 						break;
 					}
 				case '0':
 					{
 						Tile tile(i,j,texture.textures_pit[0]);
+						tile.coll = 0;
+						std::cout << tile.coll;
 						tiles.push_back(tile);
 						break;
 					}
@@ -37,9 +40,10 @@ Map::Map(std::string map_name)
 					{
 						std::cout << "a" << std::endl;
 					break;
-				}
+					}
 			}
 		}
+		std::cout << std::endl;
 		file.get(number);
 	}
 	file.close();

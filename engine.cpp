@@ -15,6 +15,7 @@ void Engine::start()
 
 	while(window.isOpen())
 	{
+		auto start = std::chrono::steady_clock::now();
 		sf::Time time = clock.restart();
 
 		while(window.pollEvent(event))
@@ -29,7 +30,12 @@ void Engine::start()
 
 		update(loopTime);
 		draw();
+		auto end = std::chrono::steady_clock::now();
+		auto time_span = end-start;
+		auto s = (1/TICK_RATE) - time_span.count();
+		std::this_thread::sleep_for(std::chrono::seconds(s));
 	}
+
 }
 
 void Engine::draw()

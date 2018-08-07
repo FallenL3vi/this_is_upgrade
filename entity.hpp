@@ -11,8 +11,7 @@ class Entity : public sf::Sprite
 		float speed = 32;
 		Map &referent;
 	public:
-		sf::Sprite sprite;
-
+		sf::Sprite sprite;	
 		Entity(short X, short Y, sf::Texture &texture, Map &referent);
 	
 		void move(const sf::Vector2f &offset, float loopTime);
