@@ -1,7 +1,5 @@
 #pragma once
-#include "keyboard.hpp"
 #include "tile.hpp"
-#include "entity.hpp"
 #include <fstream>
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -12,16 +10,12 @@
 class Map
 {
 	private:
+		const static short MAP_HEIGHT = 20;
+		const static short MAPP_WIDTH = 20;
 
-	public:
-		Keyboard keyboard;
-	
-		const static short height = 20;
-		const static short width = 20;
-		
+	public:	
 		Texture texture;
 		
-		Entity entity;
 		std::vector <Tile> tiles;
 
 		Map(std::string map_name);

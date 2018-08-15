@@ -2,13 +2,10 @@
 
 Texture::Texture()
 {
-	std::string number;
-	for(int i = 0; i < amount; i++)
+	std::string a;
+	for(auto& p: std::experimental::filesystem::directory_iterator("textures"))
 	{
-		number = std::to_string(i);
-		if(!textures_pit[i].loadFromFile("textures/"+number+".png"))
-		{
-			std::cout << "Error missing texture" << number << std::endl;
-		}
+		textures[p.path().string()] = sf::Texture();
+		textures[p.path().string()].loadFromFile(p.path().string());
 	}
 }

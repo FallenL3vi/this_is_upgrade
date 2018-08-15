@@ -1,8 +1,8 @@
 #include "map.hpp"
 
 Map::Map(std::string map_name)
-: entity(1,1,texture.textures_pit[2],*this)
 {
+	tiles.reserve(MAP_HEIGHT * MAP_WIDTH);
 	char number;
 
 	std::ifstream file;
@@ -13,37 +13,30 @@ Map::Map(std::string map_name)
 		std::cout << "Error couldn't load map" << std::endl;
 	}
 	
-	for(short i = 0; i < height; i++)
+	for(short y = 0; y < MAP_HEIGHT; y++)
 	{
-		for(short j = 0; j < width; j++)
+		for(short x = 0; x < MAP_WDITH; x++)
 		{
 			file.get(number);
 			switch(number)
 			{
 				case '1':
 					{
-						Tile tile(i,j,texture.textures_pit[1]);
-						tile.coll = 1;
-						std::cout << tile.coll;
+						Tile tile(y,x,texture.textures[1]);
+						title.coll = 1;
 						tiles.push_back(tile);
 						break;
 					}
 				case '0':
 					{
-						Tile tile(i,j,texture.textures_pit[0]);
+						Tile tile(y,x,texture.textures[0]);
 						tile.coll = 0;
-						std::cout << tile.coll;
 						tiles.push_back(tile);
 						break;
 					}
-				default:
-					{
-						std::cout << "a" << std::endl;
-					break;
-					}
+				default:break;
 			}
 		}
-		std::cout << std::endl;
 		file.get(number);
 	}
 	file.close();
@@ -51,5 +44,4 @@ Map::Map(std::string map_name)
 
 void Map::update(float loopTime)
 {
-	entity.move(keyboard.input(),loopTime);
 }
